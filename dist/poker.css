@@ -75,5 +75,10 @@
  .table-bottom{margin-top:9px}.observer-rail{margin-top:0}
 }
 
+/* Sharing follows Play again, with an accessible manual-copy fallback. */
+.result-actions{flex-direction:column;align-items:flex-start}.result-actions .primary,.result-actions #shareButton{width:min(260px,100%);min-width:0;justify-content:center}#resultPanel{overflow-y:auto}.share-feedback{width:100%;max-width:360px}.share-feedback #shareStatus{font-size:12px;line-height:1.6;margin:0;color:var(--lime)}.share-text{display:block;width:100%;margin-top:8px;border:1px solid #ffffff32;border-radius:8px;padding:10px;background:#092b23;color:var(--ink);font:inherit;font-size:13px;line-height:1.6;resize:vertical}.share-text:focus-visible{outline:2px solid var(--orange);outline-offset:2px}@media(max-width:900px){.result-actions{align-items:stretch;gap:8px}.result-actions .primary,.result-actions #shareButton{width:100%}.share-feedback{max-width:none}}
+
+@media(min-width:901px) and (max-width:1150px){.shell:has(.poker-layout[data-phase="result"]){height:auto;min-height:100svh}.poker-layout[data-phase="result"]{height:auto;min-height:calc(100svh - 20px);grid-template-rows:32px minmax(660px,1fr) 0px 24px}}
+
 /* Source link stays compact beside the music control. */
 .github-link{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;color:var(--muted);border-radius:7px}.github-link:hover{background:#ffffff0a;color:var(--lime)}.github-link:focus-visible{outline:2px solid var(--orange);outline-offset:2px}@media(max-width:900px){.github-link{flex-basis:28px;width:28px;height:28px}.github-link svg{width:18px;height:18px}}

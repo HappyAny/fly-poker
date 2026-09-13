@@ -8,6 +8,8 @@
   const settings = readSaved('fly-poker-settings'), stored = readSaved('fly-poker-record');
   let profile = Object.hasOwn(profiles, settings.profile) ? settings.profile : 'full';
   const record = {wins: Number.isSafeInteger(stored.wins) && stored.wins >= 0 ? stored.wins : 0, losses: Number.isSafeInteger(stored.losses) && stored.losses >= 0 ? stored.losses : 0};
+  const SHARE_URL = 'https://fly-poker.piphipsi.com/';
+  let shareGeneration = 0;
   let phase = 'ready', game = null, selected = new Set(), preferred = null, hintIndex = 0, last = [null, null];
   let gate = 0, timer = null, elapsed = 0, startedAt = 0, roundProfile = profile;
   const FINAL_PLAY_MS = 1800;
@@ -32,6 +34,38 @@
   const duration = () => elapsed + (phase === 'playing' ? performance.now() - startedAt : 0);
   function stopJobs() {gate++; clearTimeout(timer); timer = null; brain.cancel(); rival?.cancel();}
   function visualPause() {const held = document.hidden || phase === 'paused' || $('rulesDialog').open || $('methodsDialog').open; rival?.pause(held); music?.setSuspended(held);}
+  function resetShare() {
+    shareGeneration++; $('shareButton').disabled = false; $('shareFeedback').hidden = true;
+    $('shareText').hidden = true; $('shareText').value = ''; say('shareStatus', '');
+  }
+  function copyShareFallback(text) {
+    const field = $('shareText');
+    $('shareFeedback').hidden = false; field.hidden = false; field.value = text;
+    field.focus({preventScroll:true}); field.select(); field.setSelectionRange(0, text.length);
+    let copied = false;
+    try {copied = document.execCommand('copy');} catch {}
+    return copied;
+  }
+  async function shareResult() {
+    if (phase !== 'result' || $('shareButton').disabled) return;
+    const generation = ++shareGeneration;
+    const text = I18N.t('share.message', {wins:record.wins, losses:record.losses, url:SHARE_URL});
+    $('shareButton').disabled = true;
+    let copied = false;
+    try {await navigator.clipboard.writeText(text); copied = true;}
+    catch {
+      if (generation !== shareGeneration || phase !== 'result') return;
+      copied = copyShareFallback(text);
+    }
+    if (generation !== shareGeneration || phase !== 'result') return;
+    $('shareButton').disabled = false; $('shareFeedback').hidden = false;
+    if (copied) {
+      const field = $('shareText'), restoreFocus = document.activeElement === field;
+      field.hidden = true; field.value = '';
+      if (restoreFocus) $('shareButton').focus({preventScroll:true});
+    }
+    say('shareStatus', copied ? '战绩和链接已复制，快发给朋友吧！' : '暂时无法自动复制，请复制下方文字。');
+  }
   function message(source) {say('turnMessage', source);}
   function card(id, mini = false) {
     const el = document.createElement(mini ? 'span' : 'button');
@@ -87,7 +121,7 @@
   function finish() {
     if (phase !== 'playing' || !game || game.winner === null) return;
     elapsed = duration(); phase = 'finishing'; stopJobs(); finalPlayRemaining = FINAL_PLAY_MS;
-    const won = game.winner === 0; record[won ? 'wins' : 'losses']++; save('fly-poker-record', record);
+    const won = game.winner === 0; record[won ? 'wins' : 'losses']++; save('fly-poker-record', record); resetShare();
     neural?.rest('这局已结束'); rival?.mode(won ? 'lose' : 'win'); visualPause();
     say('resultKicker', won ? '你赢了这局' : '果蝇赢了这局');
     say('resultTitle', won ? '你先出完了！' : '果蝇溜走了。');
@@ -179,6 +213,7 @@
   }
   async function start() {
     if (phase === 'loading') return;
+    resetShare();
     music?.activate();
     stopJobs(); const startGate = gate; game = null; selected.clear(); preferred = null; hintIndex = 0; last = [null,null]; elapsed = 0;
     neural?.clear(); rival?.reset(); visualPause();
@@ -194,6 +229,7 @@
   }
   function lobby() {stopJobs(); phase = 'ready'; game = null; last = [null,null]; selected.clear(); preferred = null; elapsed = 0; neural?.clear(); rival?.reset(); visualPause(); say('loadHint', brain.ready ? '脑模型已就绪，可以直接开局' : '首次载入约 39 MB · 后续自动使用缓存'); message('先把牌出完，就赢了。'); render();}
   $('startButton').addEventListener('click', start); $('againButton').addEventListener('click', start); $('restartPaused').addEventListener('click', start);
+  $('shareButton').addEventListener('click', shareResult);
   $('pauseButton').addEventListener('click', () => pause()); $('resumeButton').addEventListener('click', resume); $('changeButton').addEventListener('click', lobby);
   $('hintButton').addEventListener('click', () => {if (phase !== 'playing' || game?.turn !== 0) return; const moves = game.legal(0); if (!moves.length) return; const move = moves[hintIndex++ % moves.length]; selected = new Set(move.cards); preferred = move.key; renderHand();});
   $('clearButton').addEventListener('click', () => {selected.clear(); preferred = null; renderHand();});

@@ -2,6 +2,11 @@
 (function(root) {
   'use strict';
   const rows = [
+    ['分享给朋友','Share with friends','友だちにシェア'],
+    ['分享战绩文案','Text to share your record','戦績のシェア文'],
+    ['战绩和链接已复制，快发给朋友吧！','Record and link copied. Send them to a friend!','戦績とリンクをコピーしました。友だちに送ってみよう！'],
+    ['暂时无法自动复制，请复制下方文字。','Automatic copying is unavailable. Copy the text below.','自動コピーができません。下の文章をコピーしてください。'],
+    ['share.message','我在和果蝇的对决中获得了{wins}赢{losses}负的好成绩，你也快来试试吧！\n网址是 {url}','I scored {wins} wins and {losses} losses against a fruit fly. Come try it yourself!\n{url}','ショウジョウバエとの対決で{wins}勝{losses}敗の好成績！あなたも挑戦してみて！\n{url}'],
     ['GitHub 源码','Source code on GitHub','GitHubのソースコード'],
     ['跟随浏览器','Browser','ブラウザー'],['背景音乐','Background music','BGM'],['音乐音量','Volume','音量'],['背景音乐设置','Music settings','BGM設定'],['背景音乐暂不可用','Music unavailable. Try again.','BGMを再生できません。再試行してください。'],['轻爵士 · 84 BPM','Soft jazz · 84 BPM','ソフトジャズ · 84 BPM'],
     ['page.title','你能打败果蝇吗？别输给虫子啊。',"Can You Beat a Fruit Fly? Don't Lose to a Bug.",'ショウジョウバエに勝てる？虫に負けるなよ。'],
@@ -67,7 +72,7 @@
     if (key&&typeof key==='object'&&typeof key.i18n==='string') return t(key.i18n,key.values);
     const template=locales[language][key]??String(key??'');
     const output=template.replace(/\{(\w+)\}/g,(_,name)=>{const value=values[name];return value&&typeof value==='object'&&value.i18n?t(value):String(value??'');});
-    return language==='en'?output.replace(/\b1 (new )?(cards|turns|wins|responses)\b/g,(_,prefix,noun)=>'1 '+(prefix||'')+noun.slice(0,-1)):output;
+    return language==='en'?output.replace(/\b1 (new )?(cards|turns|wins|losses|responses)\b/g,(_,prefix,noun)=>'1 '+(prefix||'')+(noun==='losses'?'loss':noun.slice(0,-1))):output;
   }
   function text(element,key,values={},attribute=null) {
     if (!element) return;

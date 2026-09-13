@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "checkedAt": "2026-09-13T04:51:56.713161+00:00",
+  "checkedAt": "2026-09-13T05:58:40.702Z",
   "demo": "https://fly-poker.piphipsi.com/",
   "source": "https://github.com/HappyAny/fly-poker",
   "customDomain": {
@@ -204,13 +204,13 @@
       },
       {
         "browserLocale": "ja-JP",
-        "initialTitle": "\u30b7\u30e7\u30a6\u30b8\u30e7\u30a6\u30d0\u30a8\u306b\u52dd\u3066\u308b\uff1f\u866b\u306b\u8ca0\u3051\u308b\u306a\u3088\u3002",
+        "initialTitle": "ショウジョウバエに勝てる？虫に負けるなよ。",
         "htmlSha256": "matched",
         "status": 200
       },
       {
         "browserLocale": "zh-CN",
-        "initialTitle": "\u4f60\u80fd\u6253\u8d25\u679c\u8747\u5417\uff1f\u522b\u8f93\u7ed9\u866b\u5b50\u554a\u3002",
+        "initialTitle": "你能打败果蝇吗？别输给虫子啊。",
         "htmlSha256": "matched",
         "status": 200
       }
@@ -260,8 +260,8 @@
         "type": "application/json"
       },
       "index.html": {
-        "bytes": 10810,
-        "sha256": "e5aac819ce0829dab756073fcb10dfa4e9a409f23231915d7e10f76cbdc68517",
+        "bytes": 11176,
+        "sha256": "f02c7d69fbad16e4a1e5745797896efcdd415a3ddf0a3d8451141df94583191e",
         "type": "text/html; charset=utf-8"
       },
       "model/brain.bin": {
@@ -290,13 +290,13 @@
         "type": "text/javascript; charset=utf-8"
       },
       "poker-game.js": {
-        "bytes": 19682,
-        "sha256": "6f9dcc8671de4a7d700bf74c563b9bd6168858f1e2be7a4a4d5889a1f4b561d4",
+        "bytes": 21427,
+        "sha256": "4091af7699b10a4626f08d5b43859395575ab0fab374fe5edc4828281d8bddb8",
         "type": "text/javascript; charset=utf-8"
       },
       "poker-i18n.js": {
-        "bytes": 34431,
-        "sha256": "f042b2e60d2f8d5153ff41ccaed97a674db36e9f6329b4c9667eda065f1451b8",
+        "bytes": 35351,
+        "sha256": "cd9d5d745644c092a8c211dd0a376e14f2ea6072e6f0f59bc79ffe695246ef8d",
         "type": "text/javascript; charset=utf-8"
       },
       "poker-neural.js": {
@@ -330,8 +330,8 @@
         "type": "text/javascript; charset=utf-8"
       },
       "poker.css": {
-        "bytes": 37484,
-        "sha256": "59a1881212dd0a80bc6df190056d00e51d0cd55aec6ccc2e0888ac89e2b6f518",
+        "bytes": 38596,
+        "sha256": "e2425b38fb580525bef72af64b24d6aa418662a08e7e0b1c52f1fe0fd596c486",
         "type": "text/css; charset=utf-8"
       },
       "vendor/three-LICENSE.txt": {
@@ -384,7 +384,124 @@
     "Public browser checks used the test machines configured HTTP proxy.",
     "Actual backend was CPU in this headless environment, including automatic backend selection.",
     "Mobile viewports were emulated; physical phones and manual listening were not tested.",
-    "The fixed card deal and test hooks do not replace neural computation.",
+    "The original gameplay browserChecks use fixed deals and logging hooks without replacing neural computation. shareFeature.publicBrowser uses a stub brain to isolate result and clipboard behavior.",
     "Custom-domain game loading used gzip; forced raw fallback was also verified on the workers.dev origin."
-  ]
+  ],
+  "originalGameplayValidationCheckedAt": "2026-09-13T04:51:56.713161+00:00",
+  "shareFeature": {
+    "checkedAt": "2026-09-13T05:58:40.702Z",
+    "behavior": "Share with friends appears below Play again and copies cumulative wins/losses plus the public game URL in the active interface language.",
+    "localeUnitChecksPassed": 5,
+    "publicBrowser": {
+      "checkedAt": "2026-09-13T05:58:40.702Z",
+      "base": "https://fly-poker.piphipsi.com/",
+      "browser": "153.0.8010.37",
+      "checks": [
+        {
+          "publicAssets": [
+            "index.html",
+            "poker-game.js",
+            "poker-i18n.js",
+            "poker.css"
+          ],
+          "sha256": "matched local reviewed files"
+        },
+        {
+          "legacyClipboardFallback": "actual copy passed",
+          "languageSwitch": "all three copied current record"
+        },
+        {
+          "manualFallback": "selected full text and honest failure status",
+          "nextRound": "feedback reset"
+        },
+        {
+          "language": "en",
+          "width": 1440,
+          "height": 900,
+          "winner": 0,
+          "copy": "real clipboard matched",
+          "wins": 4,
+          "losses": 2,
+          "buttonPosition": {
+            "after": "shareButton",
+            "under": true,
+            "sameWidth": true,
+            "overflow": false
+          }
+        },
+        {
+          "language": "zh-CN",
+          "width": 390,
+          "height": 844,
+          "winner": 1,
+          "copy": "real clipboard matched",
+          "wins": 3,
+          "losses": 3,
+          "buttonPosition": {
+            "after": "shareButton",
+            "under": true,
+            "sameWidth": true,
+            "overflow": false
+          }
+        },
+        {
+          "language": "ja",
+          "width": 320,
+          "height": 844,
+          "winner": 0,
+          "copy": "real clipboard matched",
+          "wins": 4,
+          "losses": 2,
+          "buttonPosition": {
+            "after": "shareButton",
+            "under": true,
+            "sameWidth": true,
+            "overflow": false
+          }
+        },
+        {
+          "language": "en",
+          "width": 430,
+          "height": 844,
+          "winner": 0,
+          "copy": "real clipboard matched",
+          "wins": 4,
+          "losses": 2,
+          "buttonPosition": {
+            "after": "shareButton",
+            "under": true,
+            "sameWidth": true,
+            "overflow": false
+          }
+        },
+        {
+          "language": "en",
+          "width": 1024,
+          "height": 650,
+          "winner": 0,
+          "copy": "real clipboard matched",
+          "wins": 4,
+          "losses": 2,
+          "buttonPosition": {
+            "after": "shareButton",
+            "under": true,
+            "sameWidth": true,
+            "overflow": false
+          }
+        },
+        {
+          "singular": "1 win and 1 loss",
+          "pendingCopyAfterNewRound": "ignored"
+        }
+      ],
+      "errors": [],
+      "scope": "Public HTTPS deployment, accessed through the test browser proxy. One-card endgame fixtures and a stub brain isolate result and clipboard behavior; this is not a neural-model validation. Mobile sizes are emulated."
+    },
+    "deployment": {
+      "cloudflareAssetsMatched": true,
+      "localAndRemoteRuntimeSynced": true,
+      "sourceAndMirrorAssetCountPerHost": 31,
+      "remoteBothHttpRoutesMatched": true
+    }
+  }
 }
