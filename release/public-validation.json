@@ -1,0 +1,390 @@
+{
+  "version": "1.1.0",
+  "checkedAt": "2026-09-13T04:51:56.713161+00:00",
+  "demo": "https://fly-poker.piphipsi.com/",
+  "source": "https://github.com/HappyAny/fly-poker",
+  "customDomain": {
+    "success": true,
+    "hostname": "fly-poker.piphipsi.com",
+    "bindings": [
+      {
+        "hostname": "fly-poker.piphipsi.com",
+        "service": "fly-poker",
+        "environment": "production",
+        "zone_name": "piphipsi.com"
+      }
+    ]
+  },
+  "readme": {
+    "default": "English",
+    "editions": [
+      "English",
+      "Simplified Chinese",
+      "Japanese"
+    ],
+    "linksChecked": true
+  },
+  "unitTests": {
+    "passed": 62,
+    "failed": 0,
+    "localeChecksAfterTitleChange": 5
+  },
+  "browserChecks": [
+    {
+      "checkedAt": "2026-09-13T04:42:37.115Z",
+      "base": "https://fly-poker.piphipsi.com/",
+      "product": "poker",
+      "mode": "gzip",
+      "forcedCpu": true,
+      "browser": "153.0.8010.37",
+      "checks": [
+        {
+          "realGame": true,
+          "backend": "cpu",
+          "freshResponses": 24,
+          "displayedResponseMatchesDecision": true,
+          "music": {
+            "playing": true,
+            "volume": 0.25,
+            "loop": true
+          }
+        },
+        {
+          "mobileWidth": 320,
+          "locale": "en-US",
+          "sourceLinkAccessible": true,
+          "noToolbarOverlap": true
+        },
+        {
+          "mobileWidth": 390,
+          "locale": "ja-JP",
+          "sourceLinkAccessible": true,
+          "noToolbarOverlap": true
+        },
+        {
+          "mobileWidth": 430,
+          "locale": "zh-CN",
+          "sourceLinkAccessible": true,
+          "noToolbarOverlap": true
+        }
+      ],
+      "modelRequests": [
+        {
+          "path": "/model/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-gzip-0-e5605976e886dde9.bin",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-gzip-1-80ca4a6937fa6c43.bin",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "scope": "Real browser game and complete graph; fixed poker deal; no mock neural computation. Software 3D rendering. The fallback mode deliberately replaces the first gzip part with HTTP 204. Mobile checks use emulated viewports."
+    },
+    {
+      "checkedAt": "2026-09-13T04:23:59.481Z",
+      "base": "https://fly-poker.happyan.workers.dev/",
+      "product": "poker",
+      "mode": "fallback",
+      "forcedCpu": true,
+      "browser": "153.0.8010.37",
+      "checks": [
+        {
+          "realGame": true,
+          "backend": "cpu",
+          "freshResponses": 24,
+          "displayedResponseMatchesDecision": true,
+          "music": {
+            "playing": true,
+            "volume": 0.25,
+            "loop": true
+          }
+        }
+      ],
+      "modelRequests": [
+        {
+          "path": "/model/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-gzip-0-e5605976e886dde9.bin",
+          "status": 204
+        },
+        {
+          "path": "/model/chunks/brain-raw-0-6e0dbcde745b1c53.bin",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-raw-1-b2b23391dad7172c.bin",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-raw-2-d54f3b81a43936c7.bin",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "scope": "Real browser game and complete graph; fixed poker deal; no mock neural computation. Software 3D rendering. The fallback mode deliberately replaces the first gzip part with HTTP 204. Mobile checks use emulated viewports."
+    },
+    {
+      "checkedAt": "2026-09-13T04:24:03.468Z",
+      "base": "https://fly-poker.happyan.workers.dev/",
+      "product": "poker",
+      "mode": "gzip",
+      "forcedCpu": false,
+      "browser": "153.0.8010.37",
+      "checks": [
+        {
+          "realGame": true,
+          "backend": "cpu",
+          "freshResponses": 24,
+          "displayedResponseMatchesDecision": true,
+          "music": {
+            "playing": true,
+            "volume": 0.25,
+            "loop": true
+          }
+        },
+        {
+          "mobileWidth": 320,
+          "locale": "en-US",
+          "sourceLinkAccessible": true,
+          "noToolbarOverlap": true
+        },
+        {
+          "mobileWidth": 390,
+          "locale": "ja-JP",
+          "sourceLinkAccessible": true,
+          "noToolbarOverlap": true
+        },
+        {
+          "mobileWidth": 430,
+          "locale": "zh-CN",
+          "sourceLinkAccessible": true,
+          "noToolbarOverlap": true
+        }
+      ],
+      "modelRequests": [
+        {
+          "path": "/model/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-gzip-0-e5605976e886dde9.bin",
+          "status": 200
+        },
+        {
+          "path": "/model/chunks/brain-gzip-1-80ca4a6937fa6c43.bin",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "scope": "Real browser game and complete graph; fixed poker deal; no mock neural computation. Software 3D rendering. The fallback mode deliberately replaces the first gzip part with HTTP 204. Mobile checks use emulated viewports."
+    }
+  ],
+  "titleChecks": {
+    "base": "https://fly-poker.piphipsi.com/",
+    "checkedAt": "2026-09-13T04:51:01.775Z",
+    "browser": "153.0.8010.37",
+    "proxyUsed": true,
+    "checks": [
+      {
+        "browserLocale": "en-US",
+        "initialTitle": "Can You Beat a Fruit Fly? Don't Lose to a Bug.",
+        "htmlSha256": "matched",
+        "status": 200
+      },
+      {
+        "manualSwitchAllLanguages": true,
+        "manualSelectionSurvivesReload": true
+      },
+      {
+        "browserLocale": "ja-JP",
+        "initialTitle": "\u30b7\u30e7\u30a6\u30b8\u30e7\u30a6\u30d0\u30a8\u306b\u52dd\u3066\u308b\uff1f\u866b\u306b\u8ca0\u3051\u308b\u306a\u3088\u3002",
+        "htmlSha256": "matched",
+        "status": 200
+      },
+      {
+        "browserLocale": "zh-CN",
+        "initialTitle": "\u4f60\u80fd\u6253\u8d25\u679c\u8747\u5417\uff1f\u522b\u8f93\u7ed9\u866b\u5b50\u554a\u3002",
+        "htmlSha256": "matched",
+        "status": 200
+      }
+    ],
+    "errors": []
+  },
+  "runtime": {
+    "files": {
+      "assets/fly-rival.png": {
+        "bytes": 1108851,
+        "sha256": "4d22a3cfd28897e9e416a3579584b24ebfbc9e4f30590892ababa8372b9d3ed5",
+        "type": "image/png"
+      },
+      "brain-cpu.mjs": {
+        "bytes": 3364,
+        "sha256": "b4242f8b13edf940765f256261de3c2f0b9afc4b6d69015fa8f5c5ff18b00766",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "brain-cpu.wasm": {
+        "bytes": 107042,
+        "sha256": "4de21388da37b7fb7bdb8b8e712c74ffedbf06595007054f749a5fae5de16f7d",
+        "type": "application/wasm"
+      },
+      "brain-gpu.mjs": {
+        "bytes": 8476,
+        "sha256": "6f2a4c9c622738024ec9bb2f55ef3205944d523b631ba2e86ef0863a1a6a236b",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "brain-graph.mjs": {
+        "bytes": 9272,
+        "sha256": "f312e2a97a4bdba1749ab2ca3b2673c3f9d6e7d59cb35bf2e3502028248eb11d",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "brain.wgsl": {
+        "bytes": 3353,
+        "sha256": "1de70638d3e7ffab75a0e8406b4fc82b3903d2dbec2c7e6b674dfe79c3a6dca6",
+        "type": "text/plain; charset=utf-8"
+      },
+      "data/live-policy.json": {
+        "bytes": 91289,
+        "sha256": "9335921dc3a2a5ede7279a26449984f3d81ef838a44fd9cda461edbd57ccaaba",
+        "type": "application/json"
+      },
+      "data/poker-policy.json": {
+        "bytes": 531289,
+        "sha256": "4eaa82bccd831cd905323744065f72ceb17c307f694af9bb20e9f16b7c7b959a",
+        "type": "application/json"
+      },
+      "index.html": {
+        "bytes": 10810,
+        "sha256": "e5aac819ce0829dab756073fcb10dfa4e9a409f23231915d7e10f76cbdc68517",
+        "type": "text/html; charset=utf-8"
+      },
+      "model/brain.bin": {
+        "bytes": 61482756,
+        "sha256": "c374131cc4ea0a0012d23391a779a163403a052d8e28fb05cb8d5f7574276197",
+        "type": "application/octet-stream"
+      },
+      "model/brain.bin.gz": {
+        "bytes": 39334710,
+        "sha256": "2e3f98cd8c4b749bd2faa408ba70977e1cac2acb79b2c2aa885177b6b0b7b9a8",
+        "type": "application/gzip"
+      },
+      "model/manifest.json": {
+        "bytes": 1166,
+        "sha256": "a243bd11c6805852744f63fbc35881bee9fe9c0b7bc395fe51918c27b6bf6935",
+        "type": "application/json"
+      },
+      "poker-brain.js": {
+        "bytes": 2624,
+        "sha256": "48e899346d0903daca087905fdeb80fdea89079f548cc3ab437c4ac12648f9ba",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-core.js": {
+        "bytes": 9447,
+        "sha256": "368734dce3b0876087631e3be6fd453fc90526f3f81a0a320045ac1953340489",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-game.js": {
+        "bytes": 19682,
+        "sha256": "6f9dcc8671de4a7d700bf74c563b9bd6168858f1e2be7a4a4d5889a1f4b561d4",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-i18n.js": {
+        "bytes": 34431,
+        "sha256": "f042b2e60d2f8d5153ff41ccaed97a674db36e9f6329b4c9667eda065f1451b8",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-neural.js": {
+        "bytes": 5524,
+        "sha256": "f45902522149ff6634bcd43cd1f0b678aec251b6f768106c78ab5a2f08fc231a",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-rival.js": {
+        "bytes": 4876,
+        "sha256": "7193c59ff2cad6144fd665c35a28a5f73a28788354d97460ee3c272b1eb0a9ff",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-scene.mjs": {
+        "bytes": 17812,
+        "sha256": "e32627e4de140222188897471bb477e775a5766addee34eb03fd2346d1238a8e",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-search.js": {
+        "bytes": 13777,
+        "sha256": "65f4fcc2f4232f3b5972a0c058ee5ca46f19fa5791c27109cf502a9c76e2d567",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-strategy.js": {
+        "bytes": 6146,
+        "sha256": "3f895ce4340126d6a61e2814aadf5cf472f717f10cceafa3e127b15df036c9ac",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-worker.mjs": {
+        "bytes": 2863,
+        "sha256": "92528d212db0cdc0c52759d114cd65fea4370e314d44d9d8955676c74c83dc4e",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker.css": {
+        "bytes": 37484,
+        "sha256": "59a1881212dd0a80bc6df190056d00e51d0cd55aec6ccc2e0888ac89e2b6f518",
+        "type": "text/css; charset=utf-8"
+      },
+      "vendor/three-LICENSE.txt": {
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+        "type": "text/plain; charset=utf-8"
+      },
+      "vendor/three.core.js": {
+        "bytes": 1458113,
+        "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "vendor/three.module.js": {
+        "bytes": 662772,
+        "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "poker-music.js": {
+        "bytes": 5446,
+        "sha256": "e101cab7978dc847eb2e71cb0194ea87445513f9b411f65a7e640f28de2cbe63",
+        "type": "text/javascript; charset=utf-8"
+      },
+      "audio/table-lounge.mp3": {
+        "bytes": 1098395,
+        "sha256": "b9fc791747109f9258882352b1cf5cc4e16f7d5a7b6304b1833ef0583f32c700",
+        "type": "audio/mpeg"
+      },
+      "vendor/brain-model-LICENSE.txt": {
+        "bytes": 1085,
+        "sha256": "3621f6d6476189190e2960fa43f11b275ba4eca848fdac50a1ba2925de6223e8",
+        "type": "text/plain; charset=utf-8"
+      },
+      "model/sources.json": {
+        "bytes": 1538,
+        "sha256": "a1cb2fa04dcb889ea4737cfdf7cf75222210304a6af807e6e5aa87aad6df028f",
+        "type": "application/json"
+      },
+      "model/README.txt": {
+        "bytes": 1447,
+        "sha256": "146b65296aa46c5cb8e9117371a5ae9365c4b7db064a7f7865ddb4be290dcca4",
+        "type": "text/plain; charset=utf-8"
+      }
+    },
+    "modelSha256": "c374131cc4ea0a0012d23391a779a163403a052d8e28fb05cb8d5f7574276197",
+    "cloudAssetCount": 35,
+    "largestCloudAssetBytes": 20971520
+  },
+  "validationToolSha256": "49ea3640c42d21b099727acc8ef57a67a852e7669da15bd1e40f24fcfe5747b6",
+  "limits": [
+    "Public browser checks used the test machines configured HTTP proxy.",
+    "Actual backend was CPU in this headless environment, including automatic backend selection.",
+    "Mobile viewports were emulated; physical phones and manual listening were not tested.",
+    "The fixed card deal and test hooks do not replace neural computation.",
+    "Custom-domain game loading used gzip; forced raw fallback was also verified on the workers.dev origin."
+  ]
+}

@@ -4,7 +4,7 @@
   const rows = [
     ['GitHub 源码','Source code on GitHub','GitHubのソースコード'],
     ['跟随浏览器','Browser','ブラウザー'],['背景音乐','Background music','BGM'],['音乐音量','Volume','音量'],['背景音乐设置','Music settings','BGM設定'],['背景音乐暂不可用','Music unavailable. Try again.','BGMを再生できません。再試行してください。'],['轻爵士 · 84 BPM','Soft jazz · 84 BPM','ソフトジャズ · 84 BPM'],
-    ['和果蝇打牌 · 13张跑得快','Play Cards with a Fly · 13-card Run Fast','ハエとカード · 13枚を出し切ろう'],
+    ['page.title','你能打败果蝇吗？别输给虫子啊。',"Can You Beat a Fruit Fly? Don't Lose to a Bug.",'ショウジョウバエに勝てる？虫に負けるなよ。'],
     ['meta.description','和果蝇来一把双人跑得快。每人13张，先出完就赢。','A two-player shedding game against a fly. Thirteen cards each. Empty your hand first to win.','ハエと遊ぶ2人用カードゲーム。手札は13枚。先に出し切れば勝ち。'],
     ['双人跑得快 · 13 张','Run Fast · 13 cards','2人対戦 · 13枚'],['玩法','Rules','遊び方'],['语言','Language','言語'],['暂停对局','Pause game','対局を一時停止'],['双人牌桌','Two-player table','2人用のカード卓'],
     ['果蝇','Fly','ハエ'],['你','You','あなた'],['果蝇对手','Fly opponent','対戦相手のハエ'],['张手牌','cards left','枚'],['陪练','Practice','練習'],['认真','Serious','本気'],['牌不多，心眼不一定少。','A small hand. A few tricks.','少ない手札にも、作戦はある。'],

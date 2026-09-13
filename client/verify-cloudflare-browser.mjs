@@ -3,11 +3,16 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const [base = 'http://localhost:8892/', product = 'poker', mode = 'gzip', tag = 'local'] = process.argv.slice(2);
+const defaultBackend = process.env.FLY_TEST_DEFAULT_BACKEND === '1';
+const proxyUrl = process.env.PLAYWRIGHT_PROXY_SERVER ? new URL(process.env.PLAYWRIGHT_PROXY_SERVER) : null;
+const proxy = proxyUrl ? {server: `${proxyUrl.protocol}//${proxyUrl.host}`,
+  ...(proxyUrl.username ? {username: decodeURIComponent(proxyUrl.username), password: decodeURIComponent(proxyUrl.password)} : {})} : undefined;
 if (!['poker', 'rhythm'].includes(product) || !['gzip', 'fallback', 'legacy'].includes(mode) || !/^[a-z0-9-]+$/.test(tag)) throw Error('Invalid test arguments');
 const output = new URL('../release/', import.meta.url);
 await fs.mkdir(output, {recursive: true});
 const browser = await chromium.launch({...(process.env.CHROME_PATH ? {executablePath: process.env.CHROME_PATH} : {channel: 'chrome'}), headless: true,
-  args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-blink-features=WebGPU']});
+  ...(proxy ? {proxy} : {}),
+  args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', ...(defaultBackend ? [] : ['--disable-blink-features=WebGPU'])]});
 const errors = [], modelRequests = [], checks = [];
 const screenshot = (page, name) => page.screenshot({path: new URL(`cloudflare-${tag}-${product}-${mode}-${name}.png`, output).pathname.replace(/^\/([A-Z]:)/, '$1'), fullPage: true});
 try {
@@ -45,7 +50,7 @@ try {
       hand: __cloudQA.game.hands[0].length, ready: document.getElementById('startPanel').hidden,
       error: document.getElementById('loadError').textContent, width: innerWidth, scrollWidth: document.documentElement.scrollWidth,
       music: {playing: !document.querySelector('audio').paused, volume: document.querySelector('audio').volume, loop: document.querySelector('audio').loop}}));
-    assert(state.ready && !state.error); assert.equal(state.backend, 'cpu'); assert.equal(state.observations, 24);
+    assert(state.ready && !state.error); assert(defaultBackend ? ['cpu', 'webgpu'].includes(state.backend) : state.backend === 'cpu'); assert.equal(state.observations, 24);
     assert.equal(state.hand, 13); assert.deepEqual(state.selected, state.rendered); assert.equal(state.language, 'en');
     assert.equal(state.width, state.scrollWidth); assert(state.music.playing && state.music.loop && state.music.volume === .25);
     checks.push({realGame: true, backend: state.backend, freshResponses: state.observations, displayedResponseMatchesDecision: true, music: state.music});
@@ -53,7 +58,7 @@ try {
     await page.locator('#startButton').click();
     await page.waitForFunction(() => document.body.dataset.phase === 'playing' && __cloudQA.observations.some(v => v.outputs > 0), null, {timeout: 120000});
     const state = await page.evaluate(() => ({phase: document.body.dataset.phase, backend: __cloudQA.compute.backend, observations: __cloudQA.observations, error: document.getElementById('loadError').textContent}));
-    assert.equal(state.backend, 'cpu'); assert.equal(state.phase, 'playing'); assert(!state.error);
+    assert(defaultBackend ? ['cpu', 'webgpu'].includes(state.backend) : state.backend === 'cpu'); assert.equal(state.phase, 'playing'); assert(!state.error);
     checks.push({realGame: true, backend: state.backend, freshResponses: state.observations.length, nonzeroNeuralOutput: true});
     await page.locator('#pauseButton').click();
     await page.waitForFunction(() => document.body.dataset.phase === 'paused');
@@ -87,8 +92,8 @@ try {
     await mobile.close();
   }
   assert.deepEqual(errors, []);
-  const report = {checkedAt: new Date().toISOString(), base, product, mode, browser: browser.version(), checks, modelRequests, errors,
-    scope: 'Real browser game and complete graph. CPU forced for deterministic coverage; fixed poker deal; no mock neural computation. Fallback deliberately replaces the first gzip part with HTTP 204. Mobile checks use emulated viewports.'};
+  const report = {checkedAt: new Date().toISOString(), base, product, mode, forcedCpu: !defaultBackend, browser: browser.version(), checks, modelRequests, errors,
+    scope: 'Real browser game and complete graph; fixed poker deal; no mock neural computation. Software 3D rendering. The fallback mode deliberately replaces the first gzip part with HTTP 204. Mobile checks use emulated viewports.'};
   await fs.writeFile(new URL(`cloudflare-${tag}-${product}-${mode}-browser.json`, output), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report));
 } finally {await browser.close();}
