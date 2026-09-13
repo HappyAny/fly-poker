@@ -1,0 +1,30 @@
+{
+  "format": "FYB2",
+  "version": 2,
+  "neurons": 138639,
+  "connections": 15091983,
+  "readout": 1411,
+  "stimulated": 873,
+  "bytes": 61482756,
+  "gzip_bytes": 39334710,
+  "sha256": "c374131cc4ea0a0012d23391a779a163403a052d8e28fb05cb8d5f7574276197",
+  "gzip_sha256": "2e3f98cd8c4b749bd2faa408ba70977e1cac2acb79b2c2aa885177b6b0b7b9a8",
+  "source_graph_sha256": "30a4f32c6ab7145aad7d479c89be421f3cfc787d1230ec42a86b16e13a969ebf",
+  "weight_float32_reconstruction_exact": true,
+  "max_incoming_absolute_units": 69948,
+  "units_min": -2405,
+  "units_max": 1897,
+  "model": {
+    "dt_ms": 0.1,
+    "delay_steps": 18,
+    "refractory_steps": 22,
+    "rest_mv": -52,
+    "threshold_mv": -45,
+    "input_jump_mv": 68.75,
+    "tau_membrane_ms": 20,
+    "tau_synapse_ms": 5,
+    "weight_mv_per_unit": 0.275
+  },
+  "source": "Full existing FlyWire-derived graph; all nodes and edges retained. Root identifiers omitted.",
+  "numerics": "Arrival weights sum in exact integer synapse units, then convert to float32 mV. Hash-based Bernoulli inputs are shared by both backends. This changes floating addition order and random streams versus the original Numba implementation."
+}

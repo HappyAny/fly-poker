@@ -1,0 +1,32 @@
+{
+  "Completeness_783.csv": {
+    "url": "https://raw.githubusercontent.com/philshiu/Drosophila_brain_model/91bdd1e7dcf193f3e7ca5a8933497fcef63b7960/Completeness_783.csv",
+    "bytes": 3327347,
+    "sha256": "bbb847a4cc2caaa7a16349722d220c087317b946d148d4d592d94d250617a311"
+  },
+  "Connectivity_783.parquet": {
+    "url": "https://raw.githubusercontent.com/philshiu/Drosophila_brain_model/91bdd1e7dcf193f3e7ca5a8933497fcef63b7960/Connectivity_783.parquet",
+    "bytes": 100804642,
+    "sha256": "efeb23fb99098e9c390f6869969b2a121a2ee92c833cfc45ecb2c1d8e1af0347"
+  },
+  "LICENSE": {
+    "url": "https://raw.githubusercontent.com/philshiu/Drosophila_brain_model/91bdd1e7dcf193f3e7ca5a8933497fcef63b7960/LICENSE",
+    "bytes": 1085,
+    "sha256": "3621f6d6476189190e2960fa43f11b275ba4eca848fdac50a1ba2925de6223e8"
+  },
+  "classification.csv.gz": {
+    "url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/classification.csv.gz",
+    "bytes": 934402,
+    "sha256": "e946b552f4056dfc977707be0674609832c3f64332a22d69dc0d9615e7aae663"
+  },
+  "coordinates.csv.gz": {
+    "url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/coordinates.csv.gz",
+    "bytes": 5314546,
+    "sha256": "14337121f451f98c2576cee72c24409ada5aaf7948b7c7ca8de9040296840e05"
+  },
+  "consolidated_cell_types.csv.gz": {
+    "url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/consolidated_cell_types.csv.gz",
+    "bytes": 901707,
+    "sha256": "8aba246d71dc40361677493629972ce3883048c3d02010adc42bda22962a1a2d"
+  }
+}

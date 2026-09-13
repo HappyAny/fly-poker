@@ -1,0 +1,12 @@
+node_modules/
+.cloudflare/
+.wrangler/
+.env
+.env.*
+.dev.vars*
+__pycache__/
+*.pyc
+*.log
+release/*
+!release/pass-fixture.json
+!release/public-validation.json

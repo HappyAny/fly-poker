@@ -1,0 +1,10 @@
+{
+  "name": "fly-poker",
+  "compatibility_date": "2026-09-13",
+  "workers_dev": true,
+  "assets": {
+    "directory": ".cloudflare/public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
